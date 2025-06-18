@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Over Ons - Gorilla Frame</title>
+  <!-- Logo styling -->
+  <style>
+    header .logo {
+      font-weight: 700;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: white;
+      text-decoration: none;
+      transition: color 0.3s ease, transform 0.2s ease;
+    }
+    header .logo:hover { transform: scale(1.1); }
+    header .logo:active { color: #3399ff; transform: scale(1.1); }
+  </style>
+
+  <!-- Global and layout styling -->
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #090808;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    header {
+      background: #000;
+      color: white;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 1.5rem;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      transition: color 0.3s ease;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
+    }
+    nav a:hover { color: #aaddff; }
+
+    .content {
+      flex: 1;
+      padding: 4rem 2rem;
+      max-width: 800px;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+    }
+    .section { display: flex; flex-direction: column; gap: 1rem; }
+
+    .about-header {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+    .about-img {
+      width: 250px;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 12px;
+      flex-shrink: 0;
+    }
+    .about-text h1 { font-size: 2.5rem; font-weight: 900; }
+    .about-text p { font-size: 1rem; }
+
+    .team-list h2 { font-size: 1.8rem; }
+    .team-member {
+      background: #3a5a89;
+      color: white;
+      padding: 1rem;
+      border-radius: 12px;
+      cursor: pointer;
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .team-member:after {
+      content: '\25BC'; /* Down arrow */
+      position: absolute;
+      right: 1rem;
+      font-size: 1rem;
+      transition: transform 0.3s ease;
+    }
+    .team-member.expanded:after {
+      transform: rotate(180deg);
+    }
+    .team-member img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    .team-member-info h3 { margin-bottom: 0.5rem; }
+    .team-member-info p { font-size: 0.95rem; }
+
+    .team-extra {
+      max-height: 0;
+      overflow: hidden;
+      background: #2e4268;
+      border-radius: 0 0 12px 12px;
+      transition: max-height 0.4s ease;
+      padding: 0 1rem;
+    }
+    .team-member.expanded + .team-extra {
+      max-height: 200px;
+      padding: 1rem;
+    }
+    .team-extra p { margin: 0.5rem 0; line-height: 1.4; }
+
+    .mission h2 { font-size: 1.8rem; margin-bottom: 0.5rem; }
+    .mission p, .mission ul { font-size: 1.1rem; line-height: 1.6; }
+    .mission ul { list-style: disc inside; margin-top: 0.5rem; }
+
+    footer {
+      background: #222;
+      color: #ccc;
+      padding: 2rem;
+      text-align: center;
+    }
+    footer a { color: #ffa500; text-decoration: none; font-weight: 600; }
+      @media (max-width: 768px) {
+  .about-header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .about-img {
+    width: 80%;
+    height: auto;
+    margin: 0 auto;
+  }
+
+  .about-text h1 {
+    font-size: 2rem;
+  }
+
+  .about-text p {
+    font-size: 1rem;
+  }
+
+  .team-member {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .team-member img {
+    width: 80px;
+    height: 80px;
+  }
+
+  .team-member-info h3 {
+    font-size: 1.2rem;
+  }
+
+  .team-member-info p {
+    font-size: 0.95rem;
+  }
+
+  .mission h2 {
+    font-size: 1.5rem;
+  }
+
+  .mission p, .mission ul {
+    font-size: 1rem;
+  }
+
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  nav a {
+    margin-left: 0;
+    font-size: 0.95rem;
+  }
+
+  .content {
+    padding: 2rem 1rem;
+  }
+}
+
+  </style>
+
+</head>
+<body>
+  <header>
+    <a href="index.html" class="logo">Gorilla frame</a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="diensten.html">Diensten</a>
+      <a href="over.html">Over Ons</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <div class="content">
+    <!-- Over Ons Intro -->
+    <div class="section about-header">
+      <img src="teamfoto.jpeg" alt="Gorilla Frame teamfoto" class="about-img" />
+      <div class="about-text">
+        <h1>OVER ONS</h1>
+        <p>
+          Gorilla Frame brengt jouw visie tot leven met professionele fotografie en videografie.
+          Ons team combineert creativiteit, techniek en passie om jouw verhaal uniek in beeld te brengen.
+        </p>
+      </div>
+    </div>
+
+    <!-- Team Leden -->
+    <div class="section team-list">
+      <h2>Ons Team</h2>
+      <div class="team-member" onclick="toggleExtra(this)">
+        <img src="https://via.placeholder.com/150" alt="Thomas Wylock" />
+        <div class="team-member-info">
+          <h3>Thomas Wylock</h3>
+          <p>Gespecialiseerd in professionele drone-operaties, videoproductie en klantrelatiebeheer.</p>
+        </div>
+      </div>
+      <div class="team-extra">
+        <p>Thomas is verantwoordelijk voor het veilig uitvoeren van dronevluchten, vastleggen van dynamische luchtbeelden en het onderhouden van klantrelaties tijdens elk project.</p>
+      </div>
+
+      <div class="team-member" onclick="toggleExtra(this)">
+        <img src="https://via.placeholder.com/150" alt="Austyn" />
+        <div class="team-member-info">
+          <h3>Austyn</h3>
+          <p>Expert in drone-vluchtmanagement, hoogwaardige videografie en postproductie (editing).</p>
+        </div>
+      </div>
+      <div class="team-extra">
+        <p>Austyn beheert de planning en uitvoering van drone-opnames, bewerkt ruwe beelden naar professionele video’s en verzorgt de eindmontage.</p>
+      </div>
+    </div>
+
+    <!-- Missie & Waarden -->
+    <div class="section mission">
+      <h2>Onze Missie & Waarden</h2>
+      <p>
+        We streven ernaar de hoogste kwaliteit te leveren en duurzame relaties op te bouwen met onze klanten.
+        Door in te spelen op nieuwe technologieën en trends, blijven we voorop lopen in de industrie.
+      </p>
+      <ul>
+        <li>Creativiteit: Innovatieve en unieke visuele concepten.</li>
+        <li>Professionaliteit: Betrouwbaar, punctueel en gericht op kwaliteit.</li>
+        <li>Passie: Gedreven door enthousiasme voor elk project.</li>
+      </ul>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2025 Gorilla Frame - Alle rechten voorbehouden.</p>
+    <p>
+      Contact: <a href="mailto:contact.gorillaframe@gmail.com">contact.gorillaframe@gmail.com</a>
+      | Tel: +32 (0)46 816 6571
+    </p>
+  </footer>
+
+  <script>
+    function toggleExtra(el) {
+      el.classList.toggle('expanded');
+    }
+  </script>
+</body>
+</html>
