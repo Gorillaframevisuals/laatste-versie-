@@ -475,6 +475,26 @@
     font-size: 2rem;
   }
 }
+@media (max-width: 768px) {
+  .container > div {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
+  .container > div.hidden {
+    display: block !important;
+  }
+
+  .container > div .text-overlay p {
+    display: block !important;
+  }
+
+  .container > div.active {
+    display: block !important;
+  }
+}
+
 </style>
 
 
@@ -655,6 +675,16 @@
 
   // Initieel selecteren
   selectMateriaal(document.querySelector('.materialen-lijst li'));
+</script>
+<script>
+  // Zorg dat op mobiel alles zichtbaar blijft
+  if (window.innerWidth <= 768) {
+    const items = document.querySelectorAll('.container > div');
+    items.forEach((div) => {
+      div.classList.remove('hidden');
+      div.classList.add('active');
+    });
+  }
 </script>
 
 
