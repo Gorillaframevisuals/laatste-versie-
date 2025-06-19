@@ -535,7 +535,8 @@
       </div>
     </div>
     <div>
-      <video src="bedrijfsfilmsuninvest.mp4" muted loop></video>
+      <video src="bedrijfsfilmsuninvest.mp4" autoplay muted loop playsinline></video>
+
       <div class="text-overlay">
         <h2><span class="number">03</span> Bedrijfsfilm</h2>
         <p>Toon de kracht van je bedrijf in volle actie. We leggen de juiste accenten in beeld en zorgen voor een sterke eerste indruk.</p>
@@ -683,6 +684,17 @@
     items.forEach((div) => {
       div.classList.remove('hidden');
       div.classList.add('active');
+    });
+  }
+
+</script>
+<script>
+  if (window.innerWidth <= 768) {
+    const videos = document.querySelectorAll('.container video');
+    videos.forEach(video => {
+      video.play().catch(() => {
+        // sommige browsers blokkeren autoplay, niks aan te doen
+      });
     });
   }
 </script>
